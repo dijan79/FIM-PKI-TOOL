@@ -47,7 +47,7 @@ class GUIRealtimeHandler(FileSystemEventHandler):
 class FIMGUIv2:
     def __init__(self, root):
         self.root = root
-        self.root.title("FIM Tool - GUI V2 (Waaris Edition)")
+        self.root.title("FIM Tool - GUI V2 (Dijan Edition)")
 
         self.tab_control = ttk.Notebook(self.root)
 
@@ -78,7 +78,7 @@ class FIMGUIv2:
         label = tk.Label(self.home_tab, text="🔐 File Integrity Monitoring Tool", font=("Helvetica", 16, "bold"))
         label.pack(pady=20)
 
-        desc = tk.Label(self.home_tab, text="Built with ❤️ by Mohammad Waaris Ali Khan", font=("Helvetica", 12))
+        desc = tk.Label(self.home_tab, text="Built with ❤️ by Dijan Ghale", font=("Helvetica", 12))
         desc.pack(pady=5)
 
         note = tk.Label(self.home_tab, text="This tool monitors, logs, signs, and audits your file system in real time.", wraplength=600)
