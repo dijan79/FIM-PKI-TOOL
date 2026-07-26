@@ -1,0 +1,33 @@
+# =============================================================================
+# docker-compose.yml - FIM-PKI Sentinel
+# Author: Dijan Ghale
+#
+# Run with:  docker compose up --build
+#
+# Notes:
+#   * Linux host: run `xhost +local:docker` once before starting, so the
+#     container is allowed to draw on your X11 display.
+#   * The "volumes" section binds keys/certs/logs/data/CSV_logs to the host
+#     so your PKI material and audit logs survive container restarts/rebuilds.
+#   * To monitor a real folder on your host machine, mount it too (see the
+#     commented "watched" line below) and select that path (e.g. /watched)
+#     inside the app's Live Monitor page.
+# =============================================================================
+
+services:
+  fim-tool:
+    build: .
+    image: fim-pki-sentinel:latest
+    container_name: fim-pki-sentinel
+    environment:
+      - DISPLAY=${DISPLAY}
+      - FIM_KEY_PASSWORD=ChangeMe123!
+    volumes:
+      - ./data:/app/data
+      - ./keys:/app/keys
+      - ./certs:/app/certs
+      - ./logs:/app/logs
+      - ./CSV_logs:/app/CSV_logs
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      # - /path/on/host/to/watch:/watched
+    network_mode: host
